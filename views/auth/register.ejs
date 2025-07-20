@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Elevate Workforce Solutions</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 25%, #fecfef 50%, #fad0c4 75%, #a8edea 100%);
+            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            padding: 2rem 0;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 25% 25%, rgba(255, 154, 158, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(254, 207, 239, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(168, 237, 234, 0.2) 0%, transparent 50%);
+            animation: backgroundFloat 10s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes backgroundFloat {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(180deg); }
+        }
+
+        .register-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .card {
+            border: none;
+            border-radius: 30px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.95);
+            overflow: hidden;
+            position: relative;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #ff9a9e, #fecfef, #fad0c4, #a8edea);
+        }
+
+        .card-body {
+            padding: 3rem 2.5rem;
+        }
+
+        .register-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .register-header h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .register-header p {
+            color: #6c757d;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        .register-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 10px 30px rgba(255, 154, 158, 0.4);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .register-icon i {
+            font-size: 2rem;
+            color: white;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .form-control, .form-select {
+            border-radius: 15px;
+            border: 2px solid #e9ecef;
+            padding: 15px 20px;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: #ff9a9e;
+            box-shadow: 0 0 0 0.2rem rgba(255, 154, 158, 0.25);
+            background: rgba(255, 255, 255, 1);
+            transform: translateY(-2px);
+        }
+
+        .form-text {
+            color: #6c757d;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-top: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            border: none;
+            border-radius: 15px;
+            padding: 15px 30px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(255, 154, 158, 0.4);
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255, 154, 158, 0.6);
+            background: linear-gradient(135deg, #fecfef 0%, #ff9a9e 100%);
+        }
+
+        .alert {
+            border: none;
+            border-radius: 15px;
+            padding: 1rem 1.5rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .alert-danger {
+            background: linear-gradient(135deg, #e17055 0%, #d63031 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(225, 112, 85, 0.3);
+        }
+
+        .register-links {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .register-links p {
+            color: #6c757d;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .register-links a {
+            color: #ff9a9e;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .register-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 50%;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .register-links a:hover::after {
+            width: 100%;
+        }
+
+        .register-links a:hover {
+            color: #fecfef;
+            transform: translateY(-2px);
+        }
+
+        .company-fields {
+            background: linear-gradient(135deg, #f8f9ff 0%, #fff5f5 100%);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border: 2px dashed #ff9a9e;
+            transition: all 0.3s ease;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .company-fields h6 {
+            color: #ff9a9e;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .role-selector {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .role-option {
+            position: relative;
+        }
+
+        .role-option input[type="radio"] {
+            display: none;
+        }
+
+        .role-option label {
+            display: block;
+            padding: 1.5rem;
+            border: 2px solid #e9ecef;
+            border-radius: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+            font-weight: 600;
+        }
+
+        .role-option input[type="radio"]:checked + label {
+            border-color: #ff9a9e;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 154, 158, 0.3);
+        }
+
+        .role-option i {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-elements::before,
+        .floating-elements::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .floating-elements::before {
+            width: 120px;
+            height: 120px;
+            top: 15%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+
+        .floating-elements::after {
+            width: 80px;
+            height: 80px;
+            top: 70%;
+            right: 10%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(180deg); }
+        }
+
+        @media (max-width: 768px) {
+            .card-body {
+                padding: 2rem 1.5rem;
+            }
+            
+            .register-header h2 {
+                font-size: 1.8rem;
+            }
+            
+            .role-selector {
+                grid-template-columns: 1fr;
+            }
+            
+            .register-icon {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .register-icon i {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-elements"></div>
+
+    <div class="register-container">
+        <div class="card">
+            <div class="card-body">
+                <div class="register-header">
+                    <div class="register-icon">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <h2>Join Our Community!</h2>
+                    <p>Create your account and start your career journey today</p>
+                </div>
+
+                <% if (errors.length > 0) { %>
+                    <div class="alert alert-danger">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        <strong>Please fix the following errors:</strong>
+                        <ul class="mb-0 mt-2 list-unstyled">
+                            <% errors.forEach(error => { %>
+                                <li><i class="fas fa-times me-1"></i><%= error.msg %></li>
+                            <% }); %>
+                        </ul>
+                    </div>
+                <% } %>
+
+                <form method="POST" action="/auth/register">
+                    <div class="form-group">
+                        <label for="name" class="form-label">
+                            <i class="fas fa-user me-1"></i>Full Name *
+                        </label>
+                        <input type="text" class="form-control" id="name" name="name" 
+                               value="<%= formData.name || '' %>" required 
+                               placeholder="Enter your full name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="form-label">
+                            <i class="fas fa-envelope me-1"></i>Email Address *
+                        </label>
+                        <input type="email" class="form-control" id="email" name="email" 
+                               value="<%= formData.email || '' %>" required 
+                               placeholder="Enter your email address">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="form-label">
+                            <i class="fas fa-lock me-1"></i>Password *
+                        </label>
+                        <input type="password" class="form-control" id="password" name="password" required 
+                               placeholder="Create a strong password">
+                        <div class="form-text">
+                            <i class="fas fa-info-circle me-1"></i>Password must be at least 6 characters long
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">
+                            <i class="fas fa-users me-1"></i>Account Type *
+                        </label>
+                        <div class="role-selector">
+                            <div class="role-option">
+                                <input type="radio" id="job_seeker" name="role" value="job_seeker" 
+                                       <%= formData.role === 'job_seeker' ? 'checked' : '' %>>
+                                <label for="job_seeker">
+                                    <i class="fas fa-user-tie"></i>
+                                    <div>Job Seeker</div>
+                                    <small>Looking for opportunities</small>
+                                </label>
+                            </div>
+                            <div class="role-option">
+                                <input type="radio" id="company" name="role" value="company" 
+                                       <%= formData.role === 'company' ? 'checked' : '' %>>
+                                <label for="company">
+                                    <i class="fas fa-building"></i>
+                                    <div>Company</div>
+                                    <small>Hiring talented people</small>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="companyFields" class="company-fields" style="display: none;">
+                        <h6><i class="fas fa-building me-2"></i>Company Information</h6>
+                        
+                        <div class="form-group">
+                            <label for="company_name" class="form-label">Company Name *</label>
+                            <input type="text" class="form-control" id="company_name" name="company_name" 
+                                   value="<%= formData.company_name || '' %>" 
+                                   placeholder="Enter your company name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="company_description" class="form-label">Company Description</label>
+                            <textarea class="form-control" id="company_description" name="company_description" 
+                                      rows="3" placeholder="Brief description of your company and what you do..."><%= formData.company_description || '' %></textarea>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="phone" class="form-label">
+                                    <i class="fas fa-phone me-1"></i>Phone Number
+                                </label>
+                                <input type="tel" class="form-control" id="phone" name="phone" 
+                                       value="<%= formData.phone || '' %>" 
+                                       placeholder="+977-98XXXXXXXX">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="address" class="form-label">
+                                    <i class="fas fa-map-marker-alt me-1"></i>Address
+                                </label>
+                                <input type="text" class="form-control" id="address" name="address" 
+                                       value="<%= formData.address || '' %>" 
+                                       placeholder="City, Nepal">
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-rocket me-2"></i>Create My Account
+                    </button>
+                </form>
+
+                <div class="register-links">
+                    <p>Already have an account?</p>
+                    <a href="/auth/login">Sign in to your existing account</a>
+                    <br><br>
+                    <a href="/jobs">
+                        <i class="fas fa-arrow-left me-1"></i>Back to Job Listings
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function toggleCompanyFields() {
+            const companyRadio = document.getElementById('company');
+            const companyFields = document.getElementById('companyFields');
+            const companyName = document.getElementById('company_name');
+            
+            if (companyRadio.checked) {
+                companyFields.style.display = 'block';
+                companyName.required = true;
+            } else {
+                companyFields.style.display = 'none';
+                companyName.required = false;
+            }
+        }
+
+        // Add event listeners to radio buttons
+        document.querySelectorAll('input[name="role"]').forEach(radio => {
+            radio.addEventListener('change', toggleCompanyFields);
+        });
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            toggleCompanyFields();
+        });
+
+        // Add loading effect to submit button
+        document.querySelector('form').addEventListener('submit', function() {
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Creating Account...';
+            submitBtn.disabled = true;
+            
+            // Re-enable if there's an error (page doesn't redirect)
+            setTimeout(() => {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }, 3000);
+        });
+
+        // Add focus effects
+        document.querySelectorAll('.form-control').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.style.borderColor = '#ff9a9e';
+                this.style.boxShadow = '0 0 0 0.2rem rgba(255, 154, 158, 0.25)';
+            });
+        });
+
+        // Password strength indicator
+        const passwordInput = document.getElementById('password');
+        const strengthIndicator = document.createElement('div');
+        strengthIndicator.className = 'password-strength mt-2';
+        passwordInput.parentNode.appendChild(strengthIndicator);
+
+        passwordInput.addEventListener('input', function() {
+            const password = this.value;
+            let strength = 0;
+            let message = '';
+            let color = '';
+
+            if (password.length >= 6) strength++;
+            if (password.match(/[a-z]/)) strength++;
+            if (password.match(/[A-Z]/)) strength++;
+            if (password.match(/[0-9]/)) strength++;
+            if (password.match(/[^a-zA-Z0-9]/)) strength++;
+
+            switch(strength) {
+                case 0:
+                case 1:
+                    message = 'Very Weak';
+                    color = '#e74c3c';
+                    break;
+                case 2:
+                    message = 'Weak';
+                    color = '#f39c12';
+                    break;
+                case 3:
+                    message = 'Fair';
+                    color = '#f1c40f';
+                    break;
+                case 4:
+                    message = 'Good';
+                    color = '#27ae60';
+                    break;
+                case 5:
+                    message = 'Strong';
+                    color = '#2ecc71';
+                    break;
+            }
+
+            if (password.length > 0) {
+                strengthIndicator.innerHTML = `<small style="color: ${color}; font-weight: 600;"><i class="fas fa-shield-alt me-1"></i>Password Strength: ${message}</small>`;
+            } else {
+                strengthIndicator.innerHTML = '';
+            }
+        });
+    </script>
+</body>
+</html>
